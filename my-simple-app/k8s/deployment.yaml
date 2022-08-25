@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-simple-app-deployment
+spec:
+  replicas: 10
+  selector:
+    matchLabels:
+      app: my-simple-app-pod
+  template:
+    metadata:
+      labels:
+        app: my-simple-app-pod
+    spec:
+      containers:
+      - name: my-simple-app
+        image: jtiagosantos/my-simple-app:v2
+        ports:
+          - containerPort: 8080

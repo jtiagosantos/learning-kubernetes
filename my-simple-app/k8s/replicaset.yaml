@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: my-simple-app-replicaset
+spec:
+  replicas: 10
+  selector:
+    matchLabels:
+      app: my-simple-app-pod
+  template:
+    metadata: 
+      labels: 
+        app: my-simple-app-pod
+    spec:
+      containers:
+      - name: my-simple-app
+        image: jtiagosantos/my-simple-app:v1
+        ports:
+          - containerPort: 8080
